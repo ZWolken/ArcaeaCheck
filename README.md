@@ -2,6 +2,9 @@
 # Arcaea文件结构检查
 `ArcaeaCheck`
 
+> [!IMPORTANT]  
+> 使用前请先使用 `Visual Studio Code` 内的 [vscode-arcaea-file-format](https://github.com/yojohanshinwataikei/vscode-arcaea-file-format) 插件对 songlist 以及 packlist 文件内的**错误**和**警告**进行**修正**并且**格式化**。
+
 # 文件结构定义
 
 ```
@@ -20,18 +23,17 @@ root/
 │   ├── packlist
 │   └── ...
 ├── img/
-│   └── bg/
-│       ├── base_conflict.jpg
-│       ├── base_light.jpg
-│       └── ...
+│   ├── bg/
+│   │   ├── base_conflict.jpg
+│   │   ├── base_light.jpg
+│   │   └── ...
+│   └── ...
 ├── add_idx.py
 ├── ArcaeaCheck.py
 └── ...
 ```
 
 # 功能
-
-- 使用前请先使用 `Visual Studio Code` 内的 [vscode-arcaea-file-format](https://github.com/yojohanshinwataikei/vscode-arcaea-file-format) 插件对 songlist 内的报错进行修正并且格式化。
 
 ## `ArcaeaCheck.py`：
 
@@ -51,6 +53,9 @@ root/
 - 检查 `"date"` 的值是否为十位数字时间戳。
 
 ## `add_idx.py`
+
+> [!NOTE]  
+> 若需删除`"idx"` 行，请善用[正则表达式](https://regexr-cn.com/)进行替换删除。
 
 - 按照 songlist 内的顺序在每首歌的代码块头部加入 `"idx"` 值。
     > 该值存在与否仅影响 Link Play 功能，不会影响主程序。
