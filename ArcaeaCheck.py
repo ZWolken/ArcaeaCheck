@@ -28,7 +28,7 @@ if not os.path.isdir(img_bg_folder):
 if not os.path.isdir(pack_directory):
     print(f"pack 文件夹 {pack_directory} 不存在，请检查路径。")
 
-# 提取歌曲 id 和背景文件名
+# 提取 songlist 中 id 和 bg 文件名
 for song in songlist_data['songs']:
     song_id = song['id']
     bg_filename = song['bg']
@@ -39,7 +39,7 @@ for song in songlist_data['songs']:
     else:
         song_ids.add(song_id)
 
-    # 检查歌曲 ID 是否有对应的文件夹
+    # 检查歌曲 id 是否有对应的文件夹
     song_folder_path = os.path.join(songs_directory, song_id)
     if not os.path.isdir(song_folder_path):
         print(f"songlist \"id\": \"{song_id}\" 未在 songs 文件夹内找到对应文件夹")
@@ -102,8 +102,8 @@ for song in songlist_data['songs']:
     if not re.match(r'^\d{10}$', str(song['date'])):
         print(f"songlist \"id\": \"{song_id}\"，\"date\" 值不是十位数字时间戳")
 
-    # 将背景文件名加入列表用于检查
-    bg_filenames.append((bg_filename, song_id))  # 记录背景文件名和对应的 id
+    # 将 bg 文件名加入列表用于检查
+    bg_filenames.append((bg_filename, song_id))  # 记录 bg 文件名和对应的 id
 
 # 提取 packlist 中的 pack id 以进行 set 验证
 pack_ids = {pack['id'] for pack in packlist_data['packs']}
@@ -126,7 +126,7 @@ for bg_filename, song_id in bg_filenames:
     if not bg_file_exists:
         print(f"songlist \"id\": \"{song_id}\",\"bg\": \"{bg_filename}\"，未在 bg 文件夹内找到对应的文件")
 
-# 检查 packlist 中 pack ID 文件的存在性
+# 检查 packlist 中 pack id 文件的存在性
 for pack in packlist_data['packs']:
     pack_id = pack['id']
     pack_file_exists = any(
